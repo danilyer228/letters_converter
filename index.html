@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Конвертер символов</title>
+</head>
+<body>
+<h1>Конвертация символов для оформления постов в телеграм</h1>
+<div class="content">
+	<div>
+		<select name="type" id="type">
+			  <option value="0" selected>Set 1</option>
+			  <option value="1">Set 2</option>
+		</select>	
+	</div>
+	<br>
+	<p>Введите текст:</p>
+	<textarea id="input" rows="10" cols="50"></textarea>
+	<p>Результат:</p>
+	<textarea id="output" rows="10" cols="50"></textarea>
+</div>
+<h2>Special for Avi</h2>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="text/javascript">	
+	$(function() {
+    $("#input").keyup(function() {
+        var word = $(this).val();
+        var set = $("#type").val();
+        var tifinaghized = word.replace(/[абвгдежзийклмнопрстуфхцчшщьюя]|gw|kw/g, function(s) {
+            return alphabets[set][s] ? alphabets[set][s] : s;
+        });
+        $("#output").val(tifinaghized);
+    });
+});
+
+var alphabets = [
+	{
+	    'а': 'ⲁ',
+	    'б': 'ⳝ',
+	    'г': 'ⲅ',
+	    'д': 'ⲇ',
+	    'е': 'ⲉ',
+	    'м': 'ⲙ',
+	    'ш': 'ⲱ',
+	    'т': 'ⲧ',
+	    'й': 'ύ',
+	    'и': 'υ',
+	    'л': 'ⲗ',
+	    'о': 'ⲟ',
+	    'к': 'ⲕ',
+	    'с': 'ⲥ',
+	    'ч': 'ⳡ',
+	    'р': 'ⲣ',
+	    'у': 'ⲩ',
+	},
+	{
+	    'а': 'ᥲ',
+		'с': 'ᥴ',
+		'р': 'ρ',
+		'и': 'ᥙ',
+		'е': 'ᥱ',
+		'л': '᧘',
+		'м': 'ⲙ',
+		'о': '᧐',
+		'п': 'ᥒ',
+		'б': 'δ',
+		'з': 'ᤋ',
+		'х': '᥊',
+		'у': 'ყ',
+		'в': 'ɞ',
+		'д': 'ꬶ',
+		'т': 'ⲧ',
+		'ш': 'ᤐ', 
+		'й': 'ᥔ'
+	}
+];
+
+</script>
+</body>
+</html>
